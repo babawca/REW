@@ -1,0 +1,165 @@
+/* --- СБРОС И БАЗА --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #fff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- ПРИВЕТСТВИЕ --- */
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+    animation: floatIn 1.5s ease-out;
+}
+.hero .subtitle {
+    font-size: 1.2em;
+    color: #ffb6c1;
+    margin-bottom: 40px;
+    animation: fadeIn 2s ease;
+}
+#startBtn {
+    padding: 15px 50px;
+    font-size: 1.2em;
+    background: #ff4d6d;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+    animation: pulse 2s infinite;
+}
+#startBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px #ff4d6d;
+}
+
+/* --- ГАЛЕРЕЯ --- */
+.gallery h2, .letter h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #ffb6c1;
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+}
+.photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    width: 100%;
+}
+.photos img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #ff4d6d;
+    transition: transform 0.4s, box-shadow 0.4s, opacity 0.8s;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+}
+/* Класс для появления фото при прокрутке */
+.photos img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.photos img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 0 30px #ff4d6d;
+    z-index: 10;
+}
+/* Эффект увеличения при клике */
+.photos img.zoomed {
+    transform: scale(1.5) !important;
+    z-index: 100 !important;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 77, 109, 0.8);
+}
+
+/* --- ПИСЬМО --- */
+.letter p {
+    max-width: 600px;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #f0e6f6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+}
+.letter p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.signature {
+    font-style: italic;
+    color: #ffb6c1;
+    margin-top: 30px;
+    font-size: 1.3em;
+}
+
+/* --- ФИНАЛ --- */
+.final p {
+    font-size: 1.6em;
+    color: #ffb6c1;
+    animation: pulseText 2s infinite;
+}
+
+/* --- ЛЕТАЮЩИЕ СМАЙЛИКИ --- */
+.floating-hearts {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; overflow: hidden;
+}
+.heart-emoji {
+    position: absolute; bottom: -10vh; font-size: 24px;
+    opacity: 0.6; animation: floatUp linear infinite;
+}
+
+/* --- АНИМАЦИИ --- */
+@keyframes floatIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+    50% { box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+}
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes pulseText {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Адаптация под телефон */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 2em; }
+    .photos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .photos img { height: 150px; }
+}

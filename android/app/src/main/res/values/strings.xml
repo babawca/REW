@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">REW</string>
+    <string name="title_activity_main">REW</string>
+    <string name="package_name">com.babawca.rew</string>
+    <string name="custom_url_scheme">com.babawca.rew</string>
+</resources>
